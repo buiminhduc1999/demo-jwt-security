@@ -1,25 +1,23 @@
 package com.example.demo.securities.webconfig;
 
-import com.example.demo.models.entities.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 
 public class CustomUserDetails implements UserDetails {
 
-    private String login;
+    private String userName;
     private String password;
     private Collection<? extends GrantedAuthority> grantedAuthorities;
 
-    public static CustomUserDetails fromUserEntityToCustomUserDetails(UserEntity userEntity) {
-        CustomUserDetails c = new CustomUserDetails();
-        c.login = userEntity.getLogin();
-        c.password = userEntity.getPassword();
-        c.grantedAuthorities = Collections.singletonList(new SimpleGrantedAuthority(userEntity.getRoleEntity().getName()));
-        return c;
+    public CustomUserDetails(String userName, String password, Collection<? extends GrantedAuthority> grantedAuthorities) {
+        this.userName = userName;
+        this.password = password;
+        this.grantedAuthorities = grantedAuthorities;
+    }
+
+    public CustomUserDetails() {
     }
 
     @Override
@@ -34,7 +32,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return login;
+        return userName;
     }
 
     @Override

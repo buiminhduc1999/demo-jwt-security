@@ -1,23 +1,16 @@
-package com.example.demo.models.entities;
+package com.example.demo.models.outs;
 
-import javax.persistence.*;
+public class UserResponse {
 
-@Entity
-@Table(name = "user_table")
-public class UserEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private int idRole;
 
-    @Column(columnDefinition = "nvarchar(100)", nullable = false, unique = true)
     private String userName;
 
     private String password;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -25,8 +18,12 @@ public class UserEntity {
         this.id = id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public int getIdRole() {
+        return idRole;
+    }
+
+    public void setIdRole(int idRole) {
+        this.idRole = idRole;
     }
 
     public String getUserName() {
@@ -43,13 +40,5 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
     }
 }
