@@ -1,11 +1,11 @@
 package com.example.demo.controllers;
 
-import com.example.demo.securities.jwt.JwtProvider;
-import com.example.demo.models.entities.UserEntity;
+import com.example.demo.exceptions.ResponseDetail;
 import com.example.demo.models.ins.AuthRequest;
 import com.example.demo.models.ins.RegistrationRequest;
 import com.example.demo.models.outs.AuthResponse;
-import com.example.demo.services.UserService;
+import com.example.demo.models.outs.UserResponse;
+import com.example.demo.services.process.impls.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,16 +16,18 @@ import javax.validation.Valid;
 
 @RestController
 public class AuthController {
+
     @Autowired
-    private UserService userService;
+    private UserService iUserService;
 
-    @PostMapping("/register")
-    public ResponseEntity<UserEntity> registerUser(@RequestBody @Valid RegistrationRequest registrationRequest) {
-        return userService.registerUser(registrationRequest);
+    @PostMapping("/registers")
+    public ResponseEntity<ResponseDetail<UserResponse>> register(@RequestBody @Valid RegistrationRequest registrationRequest) {
+        return iUserService.register(registrationRequest);
     }
 
-    @PostMapping("/auth")
-    public ResponseEntity<AuthResponse> auth(@RequestBody AuthRequest request) {
-        return userService.auth(request);
+    @PostMapping("/auths")
+    public ResponseEntity<ResponseDetail<AuthResponse>> auth(@RequestBody AuthRequest request) {
+        return iUserService.auth(request);
     }
+
 }

@@ -1,21 +1,27 @@
 package com.example.demo.models.ins;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class RegistrationRequest {
 
-    @NotEmpty
-    private String login;
+    @NotNull
+    @Size(min=3, max = 60)
+    private String userName;
 
-    @NotEmpty
+    @NotNull
+    @Size(min = 6, max = 40)
     private String password;
 
-    public String getLogin() {
-        return login;
+    @NotNull
+    private int idUser;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -24,5 +30,13 @@ public class RegistrationRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 }

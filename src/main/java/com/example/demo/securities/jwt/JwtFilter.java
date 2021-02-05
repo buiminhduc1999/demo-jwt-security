@@ -21,6 +21,7 @@ import static org.springframework.util.StringUtils.hasText;
 @Component
 @Log
 public class JwtFilter extends GenericFilterBean {
+
     public static final String AUTHORIZATION = "Authorization";
 
     @Autowired
@@ -36,7 +37,8 @@ public class JwtFilter extends GenericFilterBean {
         if (token != null && jwtProvider.validateToken(token)) {
             String userLogin = jwtProvider.getLoginFromToken(token);
             CustomUserDetails customUserDetails = customUserDetailsService.loadUserByUsername(userLogin);
-            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
+            UsernamePasswordAuthenticationToken auth
+                    = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(auth);
         }
         filterChain.doFilter(servletRequest, servletResponse);

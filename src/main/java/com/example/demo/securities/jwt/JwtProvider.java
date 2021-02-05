@@ -16,10 +16,10 @@ public class JwtProvider {
     @Value("$(security.authentication.jwt.secret-key)")
     private String jwtSecret;
 
-    public String generateToken(String login) {
+    public String generateToken(String userName) {
         Date date = Date.from(LocalDate.now().plusDays(15).atStartOfDay(ZoneId.systemDefault()).toInstant());
         return Jwts.builder()
-                .setSubject(login)
+                .setSubject(userName)
                 .setExpiration(date)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();

@@ -1,16 +1,22 @@
 package com.example.demo.models.ins;
 
 
+import javax.validation.constraints.NotNull;
+
 public class AuthRequest {
-    private String login;
+
+    @NotNull
+    private String userName;
+
+    @NotNull
     private String password;
 
-    public String getLogin() {
-        return login;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
