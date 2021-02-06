@@ -10,9 +10,10 @@ public class TeamEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
-
     private int idLeader;
+
+    @Column(unique = true)
+    private int idMember;
 
     public int getId() {
         return id;
@@ -22,19 +23,19 @@ public class TeamEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getIdLeader() {
         return idLeader;
     }
 
     public void setIdLeader(int idLeader) {
         this.idLeader = idLeader;
+    }
+
+    public int getIdMember() {
+        return idMember;
+    }
+
+    public void setIdMember(int idMember) {
+        this.idMember = idMember;
     }
 }

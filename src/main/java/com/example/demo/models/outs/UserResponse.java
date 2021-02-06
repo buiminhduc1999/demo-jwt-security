@@ -10,8 +10,6 @@ public class UserResponse {
 
     private String password;
 
-    private int idTeam;
-
     private boolean status;
 
     public int getId() {
@@ -28,14 +26,6 @@ public class UserResponse {
 
     public void setIdRole(int idRole) {
         this.idRole = idRole;
-    }
-
-    public int getIdTeam() {
-        return idTeam;
-    }
-
-    public void setIdTeam(int idTeam) {
-        this.idTeam = idTeam;
     }
 
     public String getUserName() {

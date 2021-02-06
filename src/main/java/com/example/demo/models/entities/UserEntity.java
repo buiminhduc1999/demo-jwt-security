@@ -12,8 +12,6 @@ public class UserEntity {
 
     private int idRole;
 
-    private int idTeam;
-
     @Column(columnDefinition = "nvarchar(100)", nullable = false, unique = true)
     private String userName;
 
@@ -55,14 +53,6 @@ public class UserEntity {
 
     public void setIdRole(int idRole) {
         this.idRole = idRole;
-    }
-
-    public int getIdTeam() {
-        return idTeam;
-    }
-
-    public void setIdTeam(int idTeam) {
-        this.idTeam = idTeam;
     }
 
     public boolean isStatus() {
