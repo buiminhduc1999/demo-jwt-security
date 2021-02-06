@@ -3,6 +3,7 @@ package com.example.demo.services.mappers;
 import com.example.demo.models.entities.UserEntity;
 import com.example.demo.models.ins.RegistrationRequest;
 import com.example.demo.models.outs.UserResponse;
+import com.example.demo.models.outs.UserResponseOfUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,8 @@ public class UserMapper {
 
     public UserEntity convertToEntity(RegistrationRequest registrationRequest){
         UserEntity userEntity = new UserEntity();
-        userEntity.setIdRole(registrationRequest.getIdUser());
+        userEntity.setIdRole(1);
+        userEntity.setStatus(true);
         userEntity.setUserName(registrationRequest.getUserName());
         userEntity.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         return userEntity;
@@ -30,10 +32,17 @@ public class UserMapper {
         userResponse.setIdRole(userEntity.getIdRole());
         userResponse.setUserName(userEntity.getUserName());
         userResponse.setPassword(userEntity.getPassword());
+        userResponse.setStatus(userEntity.isStatus());
         return userResponse;
     }
 
     public List<UserResponse> convertListEntityToDto(List<UserEntity> studentEntities){
         return  studentEntities.stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
+    public UserResponseOfUser convertToResponseOfUser(UserEntity userEntity){
+        UserResponseOfUser userResponseOfUser = new UserResponseOfUser();
+        userResponseOfUser.setUserName(userEntity.getUserName());
+        return userResponseOfUser;
     }
 }

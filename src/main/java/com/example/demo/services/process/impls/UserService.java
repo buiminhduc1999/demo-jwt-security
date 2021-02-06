@@ -24,7 +24,5 @@ public interface UserService {
 
     UserEntity getByUserNameAndPassword(String userName, String password);
 
-    UserResponseOfUser getJwtToUserResponse(TokenRequest tokenRequest);
-
     ResponseEntity<ResponseDetail<UserResponseOfUser>> getUserById(HttpServletRequest request, String userName);
 }

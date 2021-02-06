@@ -13,9 +13,6 @@ public class RegistrationRequest {
     @Size(min = 6, max = 40)
     private String password;
 
-    @NotNull
-    private int idUser;
-
     public String getUserName() {
         return userName;
     }
@@ -32,11 +29,4 @@ public class RegistrationRequest {
         this.password = password;
     }
 
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
 }

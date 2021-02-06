@@ -3,7 +3,7 @@ package com.example.demo.models.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_table")
+@Table(name = "users")
 public class UserEntity {
 
     @Id
@@ -17,7 +17,9 @@ public class UserEntity {
 
     private String password;
 
-    public Integer getId() {
+    private boolean status;
+
+    public int getId() {
         return id;
     }
 
@@ -51,5 +53,13 @@ public class UserEntity {
 
     public void setIdRole(int idRole) {
         this.idRole = idRole;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

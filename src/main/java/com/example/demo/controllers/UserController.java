@@ -27,7 +27,6 @@ public class UserController {
     }
 
     @GetMapping("/users/{userName}")
-//    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<ResponseDetail<UserResponseOfUser>> getUserInfo(HttpServletRequest request, @PathVariable("userName") String userName) {
         return userService.getUserById(request, userName);
