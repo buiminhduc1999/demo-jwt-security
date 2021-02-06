@@ -3,8 +3,8 @@ package com.example.demo.models.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
-public class RoleEntity {
+@Table(name = "teams")
+public class TeamEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,11 +12,13 @@ public class RoleEntity {
 
     private String name;
 
-    public Integer getId() {
+    private int idLeader;
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -28,8 +30,11 @@ public class RoleEntity {
         this.name = name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getIdLeader() {
+        return idLeader;
     }
 
+    public void setIdLeader(int idLeader) {
+        this.idLeader = idLeader;
+    }
 }

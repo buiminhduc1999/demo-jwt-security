@@ -6,15 +6,18 @@ import javax.validation.constraints.Size;
 public class RegistrationRequest {
 
     @NotNull
+    private int idRole;
+
+    @NotNull
+    private int idTeam;
+
+    @NotNull
     @Size(min=3, max = 60)
     private String userName;
 
     @NotNull
     @Size(min = 6, max = 40)
     private String password;
-
-    @NotNull
-    private int idUser;
 
     public String getUserName() {
         return userName;
@@ -32,11 +35,20 @@ public class RegistrationRequest {
         this.password = password;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public int getIdRole() {
+        return idRole;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setIdRole(int idRole) {
+        this.idRole = idRole;
     }
+
+    public int getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(int idTeam) {
+        this.idTeam = idTeam;
+    }
+
 }

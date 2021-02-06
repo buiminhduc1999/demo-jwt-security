@@ -18,7 +18,9 @@ public class UserMapper {
 
     public UserEntity convertToEntity(RegistrationRequest registrationRequest){
         UserEntity userEntity = new UserEntity();
-        userEntity.setIdRole(registrationRequest.getIdUser());
+        userEntity.setIdRole(registrationRequest.getIdRole());
+        userEntity.setIdTeam(registrationRequest.getIdTeam());
+        userEntity.setStatus(true);
         userEntity.setUserName(registrationRequest.getUserName());
         userEntity.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
         return userEntity;
@@ -28,8 +30,10 @@ public class UserMapper {
         UserResponse userResponse = new UserResponse();
         userResponse.setId(userEntity.getId());
         userResponse.setIdRole(userEntity.getIdRole());
+        userResponse.setIdTeam(userResponse.getIdTeam());
         userResponse.setUserName(userEntity.getUserName());
         userResponse.setPassword(userEntity.getPassword());
+        userResponse.setStatus(userEntity.isStatus());
         return userResponse;
     }
 
