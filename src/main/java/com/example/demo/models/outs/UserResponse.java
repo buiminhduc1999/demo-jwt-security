@@ -10,6 +10,8 @@ public class UserResponse {
 
     private String password;
 
+    private int idLeader;
+
     public int getId() {
         return id;
     }
@@ -24,6 +26,14 @@ public class UserResponse {
 
     public void setIdRole(int idRole) {
         this.idRole = idRole;
+    }
+
+    public int getIdLeader() {
+        return idLeader;
+    }
+
+    public void setIdLeader(int idLeader) {
+        this.idLeader = idLeader;
     }
 
     public String getUserName() {

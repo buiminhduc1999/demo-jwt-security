@@ -12,12 +12,16 @@ public class UserEntity {
 
     private int idRole;
 
+    private int idLeader;
+
     @Column(columnDefinition = "nvarchar(100)", nullable = false, unique = true)
     private String userName;
 
     private String password;
 
-    public Integer getId() {
+    private boolean status;
+
+    public int getId() {
         return id;
     }
 
@@ -51,5 +55,21 @@ public class UserEntity {
 
     public void setIdRole(int idRole) {
         this.idRole = idRole;
+    }
+
+    public int getIdLeader() {
+        return idLeader;
+    }
+
+    public void setIdLeader(int idLeader) {
+        this.idLeader = idLeader;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

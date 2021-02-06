@@ -15,6 +15,7 @@ import com.example.demo.services.mappers.UserMapper;
 import com.example.demo.services.process.impls.UserService;
 import com.example.demo.services.validators.AuthRequestValidator;
 import com.example.demo.services.validators.RegistrationRequestValidator;
+import com.example.demo.utils.MessageResponse;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,7 +102,7 @@ public class UserServiceImpl implements UserService {
         if (userResponseOfUser.getUserName().equals(userName)) {
             return Response.ok(userResponseOfUser);
         }
-        return Response.badRequest();
+        return Response.forbidden(MessageResponse.FORBIDDEN);
     }
 
     @Override

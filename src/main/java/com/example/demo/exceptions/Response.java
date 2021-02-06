@@ -29,9 +29,9 @@ public class Response {
                 .body(new ResponseDetail<T>(HttpStatus.BAD_REQUEST, message));
     }
 
-    public static<T> ResponseEntity<ResponseDetail<T>> badRequest(String message, T object) {
+    public static<T> ResponseEntity<ResponseDetail<T>> forbidden(String message) {
         return ResponseEntity
                 .badRequest()
-                .body(new ResponseDetail<T>(HttpStatus.BAD_REQUEST, message, object));
+                .body(new ResponseDetail<T>(HttpStatus.FORBIDDEN, message));
     }
 }
