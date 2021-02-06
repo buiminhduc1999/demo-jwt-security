@@ -3,6 +3,7 @@ package com.example.demo.services.mappers;
 import com.example.demo.models.entities.UserEntity;
 import com.example.demo.models.ins.RegistrationRequest;
 import com.example.demo.models.outs.UserResponse;
+import com.example.demo.models.outs.UserResponseOfUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -37,5 +38,11 @@ public class UserMapper {
 
     public List<UserResponse> convertListEntityToDto(List<UserEntity> studentEntities){
         return  studentEntities.stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
+    public UserResponseOfUser convertToResponseOfUser(UserEntity userEntity){
+        UserResponseOfUser userResponseOfUser = new UserResponseOfUser();
+        userResponseOfUser.setUserName(userEntity.getUserName());
+        return userResponseOfUser;
     }
 }
