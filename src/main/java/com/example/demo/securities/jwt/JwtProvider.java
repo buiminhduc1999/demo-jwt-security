@@ -1,17 +1,18 @@
 package com.example.demo.securities.jwt;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
 @Component
 public class JwtProvider {
+
+    private static final Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
     @Value("$(security.authentication.jwt.secret-key)")
     private String jwtSecret;
@@ -25,12 +26,20 @@ public class JwtProvider {
                 .compact();
     }
 
-    public boolean validateToken(String token) {
+    public boolean validateJwtToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (SignatureException e) {
+            logger.error("Invalid JWT signature -> Message: {} ", e);
+        } catch (MalformedJwtException e) {
+            logger.error("Invalid JWT token -> Message: {}", e);
+        } catch (ExpiredJwtException e) {
+            logger.error("Expired JWT token -> Message: {}", e);
+        } catch (UnsupportedJwtException e) {
+            logger.error("Unsupported JWT token -> Message: {}", e);
+        } catch (IllegalArgumentException e) {
+            logger.error("JWT claims string is empty -> Message: {}", e);
         }
         return false;
     }

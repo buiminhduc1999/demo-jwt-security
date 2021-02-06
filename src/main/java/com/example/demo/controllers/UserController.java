@@ -33,4 +33,5 @@ public class UserController {
         return userService.getUserById(request, userName);
     }
 
+    @GetMapping("/user")
 }
